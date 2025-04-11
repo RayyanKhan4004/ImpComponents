@@ -1,10 +1,11 @@
+import { spawn } from "child_process";
 import React from "react";
 interface ProfileCardProps {
   date?: string;
   name?: string;
   description?: string;
   image?: string;
-  stars ?: number;
+  stars : number;
 }
 function ProfileCard({ date, name, description, image , stars }: ProfileCardProps) {
   return (
@@ -30,7 +31,10 @@ function ProfileCard({ date, name, description, image , stars }: ProfileCardProp
         </div>
         <div className="flex justify-between items-center w-full ">
         <div>
-            { stars && <div>⭐⭐⭐⭐⭐</div>}
+        {Array(Math.floor(stars)).fill(0).map((curr ,i) => (
+ <span> ⭐</span>
+  ))}
+  
         </div>
         <div className="text-[16px] ">
         Posted on
@@ -44,5 +48,6 @@ function ProfileCard({ date, name, description, image , stars }: ProfileCardProp
 }
 
 export default ProfileCard;
+
   // <ProfileCard stars={4} date="April 1, 2023" name="Steve Herron" description="I am super visual and having a clear dashboard with all the team metrics visible, helps me see where I stand on my progress. I especially like being"/>
     
